@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "description": "wakeup at 5:30",
+    "status": "done",
+    "createdAt": "2025-01-23T16:30:04.1005233",
+    "updatedAt": "2025-01-23T16:31:50.844568"
+  },
+  {
+    "id": 2,
+    "description": "go to gym",
+    "status": "done",
+    "createdAt": "2025-01-23T16:30:24.2354312",
+    "updatedAt": "2025-01-23T16:32:57.0916766"
+  },
+  {
+    "id": 3,
+    "description": "study for 2 hours",
+    "status": "done",
+    "createdAt": "2025-01-23T16:30:38.1406167",
+    "updatedAt": "2025-01-23T16:33:08.2754383"
+  },
+  {
+    "id": 4,
+    "description": "have lunch",
+    "status": "todo",
+    "createdAt": "2025-01-23T16:30:46.0272021",
+    "updatedAt": "2025-01-23T16:30:46.0272021"
+  },
+  {
+    "id": 5,
+    "description": "take a nap",
+    "status": "todo",
+    "createdAt": "2025-01-23T16:30:56.8072776",
+    "updatedAt": "2025-01-23T16:30:56.8072776"
+  }
+]
