@@ -1,6 +1,7 @@
 package com.example.TaskTracker;
 
 import com.google.gson.Gson;
+
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
@@ -13,6 +14,7 @@ import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
 
 public class TaskManager {
     private static final String FILE_NAME = "tasks.json";
@@ -26,8 +28,12 @@ public class TaskManager {
     }
 
     public void addTask(String description) {
-        int id = tasks.size() + 1; // Auto-increment ID based on task list size
-        Task newTask = new Task(id, description);
+        
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("Enter Priority (low/medium/high)");
+    	String priority = sc.nextLine().toLowerCase();
+    	int id = tasks.size() + 1; // Auto-increment ID based on task list size
+        Task newTask = new Task(id, description,priority);
         tasks.add(newTask);
         saveTasksToFile();
         System.out.println("Task added successfully: " + newTask);

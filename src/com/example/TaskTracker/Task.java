@@ -7,10 +7,12 @@ public class Task {
     private String status; // Field for status
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private String priority;
 
-    public Task(int id, String description) {
+    public Task(int id, String description, String priority) {
         this.id = id;
         this.description = description;
+        this.priority = priority;
         this.status = "todo"; // Default status
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
@@ -36,6 +38,10 @@ public class Task {
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
+    public String getpriority()
+    {
+    	return priority;
+    }
 
     // Setters
     public void setDescription(String description) {
@@ -52,6 +58,10 @@ public class Task {
         this.updatedAt = updatedAt;
     }
 
+    public void setpriority(String priority)
+    {
+    	this.priority = priority;
+    }
     @Override
     public String toString() {
         return "Task{" +
