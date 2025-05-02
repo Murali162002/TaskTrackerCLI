@@ -7,7 +7,8 @@ public class TaskTracker {
         TaskManager taskManager = new TaskManager();
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Available commands: add, update, deletetask, updatetaskstatus, display, listbystatus, mark-in progress, mark-done, exit");
+        System.out.println("Available commands: add, update, delete, updatetaskstatus, display, listbystatus, exit");
+
         while (true) {
             System.out.print("Enter command: ");
             String command = sc.nextLine().trim().toLowerCase();
@@ -22,31 +23,46 @@ public class TaskTracker {
                 case "update":
                     taskManager.displayTasks();
                     System.out.print("Enter task ID to update: ");
-                    int id = sc.nextInt();
-                    sc.nextLine(); // Clear the buffer
-                    System.out.print("Enter new task description: ");
-                    String newDescription = sc.nextLine();
-                    taskManager.updateTask(id, newDescription);
+                    if (sc.hasNextInt()) {
+                        int id = sc.nextInt();
+                        sc.nextLine(); // clear buffer
+                        System.out.print("Enter new task description: ");
+                        String newDescription = sc.nextLine();
+                        taskManager.updateTask(id, newDescription);
+                    } else {
+                        System.out.println("Invalid input. Please enter a numeric ID.");
+                        sc.nextLine(); // clear invalid input
+                    }
                     break;
 
-                case "deletetask":
+                case "delete":
                     System.out.print("Enter task ID to delete: ");
-                    int deleteId = sc.nextInt();
-                    sc.nextLine(); // Clear the buffer
-                    taskManager.deleteTask(deleteId);
+                    if (sc.hasNextInt()) {
+                        int deleteId = sc.nextInt();
+                        sc.nextLine(); // clear buffer
+                        taskManager.deleteTask(deleteId);
+                    } else {
+                        System.out.println("Invalid input. Please enter a numeric ID.");
+                        sc.nextLine(); // clear invalid input
+                    }
                     break;
 
                 case "updatetaskstatus":
                     System.out.print("Enter task ID to update status: ");
-                    int statusId = sc.nextInt();
-                    sc.nextLine(); // Clear the buffer
-                    System.out.print("Enter new status (todo, in-progress, done): ");
-                    String newStatus = sc.nextLine();
-                    taskManager.updateTaskStatus(statusId, newStatus);
+                    if (sc.hasNextInt()) {
+                        int statusId = sc.nextInt();
+                        sc.nextLine(); // clear buffer
+                        System.out.print("Enter new status (TODO, COMPLETED): ");
+                        String newStatus = sc.nextLine();
+                        taskManager.updateTaskStatus(statusId, Status.valueOf(newStatus.toUpperCase()));
+                    } else {
+                        System.out.println("Invalid input. Please enter a numeric ID.");
+                        sc.nextLine();
+                    }
                     break;
 
                 case "listbystatus":
-                    System.out.print("Enter status to filter tasks (todo, in-progress, done): ");
+                    System.out.print("Enter status to filter tasks (TODO, COMPLETED): ");
                     String status = sc.nextLine();
                     taskManager.listTasksByStatus(status);
                     break;
@@ -59,50 +75,9 @@ public class TaskTracker {
                     System.out.println("Exiting Task Tracker.");
                     sc.close();
                     return;
-                case "mark-in-progress":
-                    System.out.print("Enter task ID to mark as in-progress: ");
-                    int inProgressId = sc.nextInt();
-                    sc.nextLine(); // Clear the buffer
-                    taskManager.updateTaskStatus(inProgressId, "in-progress");
-                    break;
-
-                case "mark-done":
-                    System.out.print("Enter task ID to mark as done: ");
-                    int doneId = sc.nextInt();
-                    sc.nextLine(); // Clear the buffer
-                    taskManager.updateTaskStatus(doneId, "done");
-                    break;
-                case "list":
-                    taskManager.displayTasks(); // List all tasks (no filter)
-                    break;
-
-                case "list todo":
-                    taskManager.listTasksByStatus("todo");
-                    break;
-
-                case "list in-progress":
-                    taskManager.listTasksByStatus("in-progress");
-                    break;
-
-                case "list done":
-                    taskManager.listTasksByStatus("done");
-                    break;
-                case "help":
-                    System.out.println("Available commands:");
-                    System.out.println("add - Add a new task");
-                    System.out.println("update - Update a task's description");
-                    System.out.println("delete - Delete a task");
-                    System.out.println("mark-in-progress - Mark a task as in-progress");
-                    System.out.println("mark-done - Mark a task as done");
-                    System.out.println("list - List all tasks");
-                    System.out.println("list todo - List tasks that are 'todo'");
-                    System.out.println("list in-progress - List tasks that are 'in-progress'");
-                    System.out.println("list done - List tasks that are 'done'");
-                    System.out.println("exit - Exit the program");
-                    break;
 
                 default:
-                    System.out.println("Unknown command: " + command);
+                    System.out.println("Unknown command: " + command + ". Type 'help' to see available commands.");
                     break;
             }
         }

@@ -1,24 +1,24 @@
 package com.example.TaskTracker;
+
 import java.time.LocalDateTime;
 
 public class Task {
     private int id;
     private String description;
-    private String status; // Field for status
+    private Status status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private String priority;
+    private Priority priority;
 
-    public Task(int id, String description, String priority) {
+    public Task(int id, String description, Priority priority) {
         this.id = id;
         this.description = description;
         this.priority = priority;
-        this.status = "todo"; // Default status
+        this.status = Status.TODO;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
 
-    // Getters
     public int getId() {
         return id;
     }
@@ -27,7 +27,7 @@ public class Task {
         return description;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
@@ -38,38 +38,39 @@ public class Task {
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
-    public String getpriority()
-    {
-    	return priority;
+
+    public Priority getPriority() {
+        return priority;
     }
 
-    // Setters
     public void setDescription(String description) {
         this.description = description;
         this.updatedAt = LocalDateTime.now();
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
         this.updatedAt = LocalDateTime.now();
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setPriority(Priority priority) {
+        this.priority = priority;
     }
 
-    public void setpriority(String priority)
-    {
-    	this.priority = priority;
-    }
     @Override
     public String toString() {
         return "Task{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
-                ", status='" + status + '\'' +
+                ", status=" + status +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
+                ", priority=" + priority +
                 '}';
     }
+
+	public void setUpdatedAt(LocalDateTime now) {
+		// TODO Auto-generated method stub
+		
+	}
 }
