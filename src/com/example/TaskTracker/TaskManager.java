@@ -24,7 +24,11 @@ public class TaskManager {
         }
     }
 
-    public void addTask(String description) {
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void addTask(String description , LocalDateTime reminderTime) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Priority (LOW / MEDIUM / HIGH):");
         String input = sc.nextLine().toUpperCase();
@@ -38,7 +42,8 @@ public class TaskManager {
         }
 
         int id = tasks.size() + 1;
-        Task newTask = new Task(id, description, priority);
+        Task newTask = new Task(id, description, priority);  // Using the correct priority
+        newTask.setReminderTime(reminderTime);  // Set reminder time for the task
         tasks.add(newTask);
         saveTasksToFile();
         System.out.println("Task added successfully: " + newTask);

@@ -16,7 +16,7 @@ public class Soundalarm {
 			clip.start();
 			
 		}
-		catch(UnsupportedAudioFileException | IOException | LineUnavailableExcception e)
+		catch(UnsupportedAudioFileException | IOException | LineUnavailableException e)
 		{
 			e.printStackTrace();
 		}

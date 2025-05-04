@@ -1,5 +1,7 @@
 package com.example.TaskTracker;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class TaskTracker {
@@ -17,7 +19,20 @@ public class TaskTracker {
                 case "add":
                     System.out.print("Enter task description: ");
                     String description = sc.nextLine();
-                    taskManager.addTask(description);
+
+                    // Parse reminder time
+                    System.out.print("Enter reminder time (yyyy-MM-dd HH:mm): ");
+                    String reminderTimeInput = sc.nextLine().trim();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd H:mm");
+                    LocalDateTime reminderTime;
+                    try {
+                        reminderTime = LocalDateTime.parse(reminderTimeInput, formatter);
+                    } catch (Exception e) {
+                        System.out.println("Invalid reminder time format. Please use the correct format (yyyy-MM-dd HH:mm).");
+                        continue; // Go back to the beginning of the loop to prompt for input again
+                    }
+
+                    taskManager.addTask(description, reminderTime);
                     break;
 
                 case "update":

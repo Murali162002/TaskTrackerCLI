@@ -9,6 +9,7 @@ public class Task {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private Priority priority;
+    private LocalDateTime remindTime;
 
     public Task(int id, String description, Priority priority) {
         this.id = id;
@@ -17,6 +18,18 @@ public class Task {
         this.status = Status.TODO;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
+        this.remindTime = null;
+        
+    }
+    
+    public Task(int id, String description, Priority priority, LocalDateTime remindTime) {
+        this.id = id;
+        this.description = description;
+        this.priority = priority;
+        this.status = Status.TODO;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+        this.remindTime = remindTime;
     }
 
     public int getId() {
@@ -42,6 +55,11 @@ public class Task {
     public Priority getPriority() {
         return priority;
     }
+    
+    public LocalDateTime getReminderTime()
+    {
+    	return remindTime;
+    }
 
     public void setDescription(String description) {
         this.description = description;
@@ -57,6 +75,10 @@ public class Task {
         this.priority = priority;
     }
 
+    public void setReminderTime(LocalDateTime reminderTime)
+    {
+    	this.remindTime = reminderTime;
+    }
     @Override
     public String toString() {
         return "Task{" +
