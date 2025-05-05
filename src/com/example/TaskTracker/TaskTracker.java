@@ -85,7 +85,7 @@ public class TaskTracker {
                 case "display":
                     taskManager.displayTasks();
                     break;
-
+                    
                 case "exit":
                     System.out.println("Exiting Task Tracker.");
                     sc.close();
