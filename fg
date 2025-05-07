@@ -1,0 +1,41 @@
+[33mcommit 7ae2334ae54e72d6363055ef3311033d91effc99[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Pathivada <muralikrishnapathivada2003@gmail.com>
+Date:   Mon May 5 14:35:50 2025 +0530
+
+    made changes in reminderservice class
+
+[33mcommit acfcd1a3ff227057c1dbde1bf6c5862e6ffbcad5[m
+Author: Pathivada <muralikrishnapathivada2003@gmail.com>
+Date:   Mon May 5 02:08:21 2025 +0530
+
+    Added reminderservice class
+
+[33mcommit e3cad54fb6a0663c8c54f7352f5fe44cc773b8a2[m
+Author: Pathivada <muralikrishnapathivada2003@gmail.com>
+Date:   Sat May 3 23:54:00 2025 +0530
+
+    Created a sound alarm class to remind the tasks
+
+[33mcommit 781f66066c73a6a54aa18753ce4c756a8aebbbc7[m
+Author: Pathivada <muralikrishnapathivada2003@gmail.com>
+Date:   Fri May 2 10:41:15 2025 +0530
+
+    Initial commit: Added TaskTracker with task,status,and priority enums
+
+[33mcommit dc429876ef96bcf7489b0dbe0ba5fe686ff1a1c0[m
+Author: Pathivada <muralikrishnapathivada2003@gmail.com>
+Date:   Sat Apr 26 16:46:10 2025 +0530
+
+    Added priority field tasks
+
+[33mcommit 24a4ae0493176e19ff6d0d2eec10623d198af00e[m
+Author: Pathivada murali <148032374+Murali162002@users.noreply.github.com>
+Date:   Wed Apr 23 11:20:40 2025 +0530
+
+    Create README.md
+
+[33mcommit 8304cb24fd1906da3054fbbc2f4cad92999681bf[m
+Author: Pathivada <muralikrishnapathivada2003@gmail.com>
+Date:   Wed Apr 23 10:17:00 2025 +0530
+
+    Initial commit from new github account

@@ -1,9 +1,10 @@
 package com.example.TaskTracker;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class ReminderService extends Thread {
-    private TaskManager taskManager;
+    private final TaskManager taskManager;
 
     public ReminderService(TaskManager taskManager) {
         this.taskManager = taskManager;
@@ -12,24 +13,24 @@ public class ReminderService extends Thread {
     @Override
     public void run() {
         while (true) {
-            try {
-                // Get all tasks from TaskManager
-                List<Task> tasks = taskManager.getTasks();
+            List<Task> tasks = taskManager.getTasks();  // <-- This method must exist in TaskManager
 
-                // Check each task for its reminder time and if it's time to remind
-                for (Task task : tasks) {
-                    LocalDateTime reminderTime = task.getReminderTime();
-                    if (reminderTime != null && reminderTime.isBefore(LocalDateTime.now())) {
-                        // Play sound alarm if the reminder time has passed
+            for (Task task : tasks) {
+                LocalDateTime reminderTime = task.getReminderTime();
+                if (reminderTime != null && task.getStatus() != Status.DONE) {
+                    LocalDateTime now = LocalDateTime.now().withSecond(0).withNano(0);
+                    if (reminderTime.withSecond(0).withNano(0).equals(now)) {
+                        System.out.println("\n⏰ Reminder for Task ID " + task.getId() + ": " + task.getDescription());
                         Soundalarm.playalarm();
-                        System.out.println("Reminder: " + task.getDescription());
+                        taskManager.updateTaskStatus(task.getId(), Status.DONE);  // Mark as done after reminder
                     }
                 }
+            }
 
-                // Sleep for a certain interval before checking again (e.g., every minute)
-                Thread.sleep(60000);
+            try {
+                Thread.sleep(60000); // Check every 60 seconds
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.err.println("ReminderService interrupted.");
             }
         }
     }
